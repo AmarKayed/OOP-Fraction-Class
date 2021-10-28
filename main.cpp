@@ -30,6 +30,5 @@ class Fractie{
 
 int main(){
 
-
     return 0;
 }
