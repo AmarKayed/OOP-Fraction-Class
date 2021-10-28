@@ -30,6 +30,8 @@ public:
     friend istream &operator>>(istream &in, Fractie &ob);
 
     friend ostream &operator<<(ostream &out, const Fractie &ob);
+
+    static void print_negative(int n);
 };
 
 Fractie::Fractie(int x) : x(x){
@@ -72,13 +74,9 @@ ostream &operator<<(ostream &out, const Fractie &ob){
         cout<<"Impossible Fraction.\n";
     else{
         cout<<"1/(";
-        if(ob.get_a() < 0)
-            cout<<"("<<ob.get_a()<<")";
-        else cout<<ob.get_a();
+        Fractie::print_negative(ob.get_a());
         cout<<"*";
-        if(ob.get_x() < 0)
-            cout<<"("<<ob.get_x()<<")";
-        else cout<<ob.get_x();
+        Fractie::print_negative(ob.get_x());
         if(ob.get_b() < 0)
             cout<<" - "<< (-1)*ob.get_b();
         else cout<<" + " << ob.get_b();
@@ -86,6 +84,12 @@ ostream &operator<<(ostream &out, const Fractie &ob){
     }
     
 
+}
+
+void Fractie::print_negative(int n){
+    if(n < 0)
+        cout<<'('<<n<<')';
+    else cout<< n;
 }
 
 int main()
