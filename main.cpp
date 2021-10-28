@@ -32,20 +32,42 @@ public:
     friend ostream &operator<<(ostream &out, const Fractie &ob);
 };
 
-Fractie::Fractie(int x = 1): x(x){
-    cout<<"Constructor Called.\n\n";
+Fractie::Fractie(int x) : x(x){
+    cout << "Constructor Called.\n\n";
     int a, b;
+    cout << "Type the value of a: ";
+    cin >> a;
+    cout << "Type the value of b: ";
+    cin >> b;
+    set_a(a);
+    set_b(b);
+}
+
+Fractie::~Fractie(){
+    cout << "Destructor Called\n\n";
+    a = b = x = 0;
+}
+
+Fractie &Fractie::operator=(const Fractie &ob){
+    set_a(ob.get_a());
+    set_b(ob.get_b());
+    set_x(ob.get_x());
+    return *this;
+}
+
+istream &operator>>(istream &in, Fractie &ob){
+    int a, b, x;
     cout<<"Type the value of a: ";
     cin>>a;
     cout<<"Type the value of b: ";
     cin>>b;
-    set_a(a); set_b(b);
+    cout<<"Type the value of x: ";
+    cin>>x;
+    ob.set_a(a); ob.set_b(b); ob.set_x(x);
+    return in;
 }
 
-Fractie::~Fractie(){
-    cout<<"Destructor Called\n\n";
-    a = b = x = 0;
-}
+ostream &operator<<(ostream &out, const Fractie &ob);
 
 int main()
 {
