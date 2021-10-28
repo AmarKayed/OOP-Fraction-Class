@@ -115,11 +115,33 @@ class Operatii{
 
     private:
 
-        
+        Fractie ob;
+
+        inline void set_ob(const Fractie& x){ob = x;}
 
     public:
 
+        inline Fractie get_ob()const{return ob;}
+
+        Operatii(const Fractie& ob = 0):
+            ob(ob){}
+
+        bool conditie()const;
+
+        float valoare()const;
+
 };
+
+
+bool Operatii::conditie()const{
+    if(get_ob().get_a() * get_ob().get_x() + get_ob().get_b() == 0)
+        return false;
+    else return true;
+}
+
+float Operatii::valoare()const{
+
+}
 
 
 int main()
