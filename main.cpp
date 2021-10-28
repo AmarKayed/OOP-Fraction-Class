@@ -21,12 +21,14 @@ class Fractie{
         inline int get_x()const{return x;}
 
 
-        
+        Fractie(int a = 1, int b = 1, int x = 1):
+            a(a), b(b), x(x){}
+
+
 };
 
 
 int main(){
-
 
 
     return 0;
