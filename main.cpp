@@ -21,7 +21,7 @@ public:
 
     Fractie(int a = 1, int b = 1, int x = 1) : a(a), b(b), x(x) {}
 
-    Fractie(const Fractie &ob);
+    Fractie(const Fractie &ob) : a(ob.get_a()), b(ob.get_b()), x(ob.get_x()) {}
 
     ~Fractie();
 
