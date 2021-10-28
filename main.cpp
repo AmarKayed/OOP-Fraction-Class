@@ -110,6 +110,18 @@ void Fractie::print_negative(int n)
         cout << n;
 }
 
+
+class Operatii{
+
+    private:
+
+        
+
+    public:
+
+};
+
+
 int main()
 {
     Fractie f;
