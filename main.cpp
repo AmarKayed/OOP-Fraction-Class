@@ -34,7 +34,8 @@ public:
     static void print_negative(int n);
 };
 
-Fractie::Fractie(int x) : x(x){
+Fractie::Fractie(int x) : x(x)
+{
     cout << "Constructor Called.\n\n";
     int a, b;
     cout << "Type the value of a: ";
@@ -45,56 +46,73 @@ Fractie::Fractie(int x) : x(x){
     set_b(b);
 }
 
-Fractie::~Fractie(){
+Fractie::~Fractie()
+{
     cout << "Destructor Called\n\n";
     a = b = x = 0;
 }
 
-Fractie &Fractie::operator=(const Fractie &ob){
+Fractie &Fractie::operator=(const Fractie &ob)
+{
     set_a(ob.get_a());
     set_b(ob.get_b());
     set_x(ob.get_x());
     return *this;
 }
 
-istream &operator>>(istream &in, Fractie &ob){
+istream &operator>>(istream &in, Fractie &ob)
+{
     int a, b, x;
-    cout<<"Type the value of a: ";
-    cin>>a;
-    cout<<"Type the value of b: ";
-    cin>>b;
-    cout<<"Type the value of x: ";
-    cin>>x;
-    ob.set_a(a); ob.set_b(b); ob.set_x(x);
+    cout << "Type the value of a: ";
+    cin >> a;
+    cout << "Type the value of b: ";
+    cin >> b;
+    cout << "Type the value of x: ";
+    cin >> x;
+    ob.set_a(a);
+    ob.set_b(b);
+    ob.set_x(x);
     return in;
 }
 
-ostream &operator<<(ostream &out, const Fractie &ob){
-    if(ob.get_a() * ob.get_x() + ob.get_b() == 0)
-        cout<<"Impossible Fraction.\n";
-    else{
-        cout<<"1/(";
+ostream &operator<<(ostream &out, const Fractie &ob)
+{
+    if (ob.get_a() * ob.get_x() + ob.get_b() == 0)
+        cout << "Impossible Fraction.\n";
+    else
+    {
+        cout << "1/(";
         Fractie::print_negative(ob.get_a());
-        cout<<"*";
+        cout << '*';
         Fractie::print_negative(ob.get_x());
-        if(ob.get_b() < 0)
-            cout<<" - "<< (-1)*ob.get_b();
-        else cout<<" + " << ob.get_b();
-        cout<<")\n";
-    }
-    
+        if (ob.get_b() < 0)
+            cout << " - " << (-1) * ob.get_b();
+        else
+            cout << " + " << ob.get_b();
+        cout << ") = ";
 
+        float denominator = ob.get_a() * ob.get_x() + ob.get_b();
+        float result = 1 / denominator;
+
+        if (denominator < 0)
+            cout << "- 1/" << denominator * (-1);
+        else
+            cout << "1/" << denominator;
+        cout << " = " << result<<'\n';
+    }
 }
 
-void Fractie::print_negative(int n){
-    if(n < 0)
-        cout<<'('<<n<<')';
-    else cout<< n;
+void Fractie::print_negative(int n)
+{
+    if (n < 0)
+        cout << '(' << n << ')';
+    else
+        cout << n;
 }
 
 int main()
 {
     Fractie f;
-    cout<<f;
+    cout << f;
     return 0;
 }
