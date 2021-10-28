@@ -19,7 +19,7 @@ public:
     inline int get_b() const { return b; }
     inline int get_x() const { return x; }
 
-    Fractie(int a = 1, int b = 1, int x = 1) : a(a), b(b), x(x) {}
+    Fractie(int x = 1);
 
     Fractie(const Fractie &ob) : a(ob.get_a()), b(ob.get_b()), x(ob.get_x()) {}
 
@@ -31,6 +31,21 @@ public:
 
     friend ostream &operator<<(ostream &out, const Fractie &ob);
 };
+
+Fractie::Fractie(int x = 1): x(x){
+    cout<<"Constructor Called.\n\n";
+    int a, b;
+    cout<<"Type the value of a: ";
+    cin>>a;
+    cout<<"Type the value of b: ";
+    cin>>b;
+    set_a(a); set_b(b);
+}
+
+Fractie::~Fractie(){
+    cout<<"Destructor Called\n\n";
+    a = b = x = 0;
+}
 
 int main()
 {
