@@ -1,34 +1,39 @@
-#include<iostream>
+#include <iostream>
 
 using namespace std;
 
-class Fractie{
+class Fractie
+{
 
-    private:
+private:
+    int a;
+    int b;
+    int x;
 
-        int a;
-        int b;
-        int x;
+    inline void set_a(int a) { this->a = a; }
+    inline void set_b(int b) { this->b = b; }
+    inline void set_x(int x) { this->x = x; }
 
-        inline void set_a(int a){this->a = a;}
-        inline void set_b(int b){this->b = b;}
-        inline void set_x(int x){this->x = x;}
+public:
+    inline int get_a() const { return a; }
+    inline int get_b() const { return b; }
+    inline int get_x() const { return x; }
 
-    public:
+    Fractie(int a = 1, int b = 1, int x = 1) : a(a), b(b), x(x) {}
 
-        inline int get_a()const{return a;}
-        inline int get_b()const{return b;}
-        inline int get_x()const{return x;}
+    Fractie(const Fractie &ob);
 
+    ~Fractie();
 
-        Fractie(int a = 1, int b = 1, int x = 1):
-            a(a), b(b), x(x){}
+    Fractie &operator=(const Fractie &ob);
 
+    friend istream &operator>>(istream &in, Fractie &ob);
 
+    friend ostream &operator<<(ostream &out, const Fractie &ob);
 };
 
-
-int main(){
+int main()
+{
 
     return 0;
 }
