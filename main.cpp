@@ -48,7 +48,7 @@ Fractie::Fractie(int x) : x(x)
 
 Fractie::~Fractie()
 {
-    cout << "Destructor Called\n\n";
+    // cout << "Destructor Called\n\n";
     a = b = x = 0;
 }
 
@@ -98,7 +98,7 @@ ostream &operator<<(ostream &out, const Fractie &ob)
             cout << "- 1/" << denominator * (-1);
         else
             cout << "1/" << denominator;
-        cout << " = " << result<<'\n';
+        cout << " = " << result << '\n';
     }
 }
 
@@ -110,36 +110,43 @@ void Fractie::print_negative(int n)
         cout << n;
 }
 
+class Operatii
+{
 
-class Operatii{
+private:
+    Fractie ob;
 
-    private:
+    inline void set_ob(const Fractie &x) { ob = x; }
 
-        Fractie ob;
+public:
+    inline Fractie get_ob() const { return ob; }
 
-        inline void set_ob(const Fractie& x){ob = x;}
+    Operatii(const Fractie &ob = 0) : ob(ob) {}
 
-    public:
+    bool conditie() const;
 
-        inline Fractie get_ob()const{return ob;}
-
-        Operatii(const Fractie& ob = 0):
-            ob(ob){}
-
-        bool conditie()const;
-
-        float valoare()const;
-
+    float valoare();
 };
 
-
-bool Operatii::conditie()const{
-    if(get_ob().get_a() * get_ob().get_x() + get_ob().get_b() == 0)
+bool Operatii::conditie() const
+{
+    if (get_ob().get_a() * get_ob().get_x() + get_ob().get_b() == 0)
         return false;
-    else return true;
+    else
+        return true;
 }
 
-float Operatii::valoare()const{
+float Operatii::valoare()
+{
+    cout << "Type the value of x: ";
+    int x;
+    cin >> x;
+
+    float result = 1 / float(get_ob().get_a() * get_ob().get_x() + get_ob().get_b());
+    cout << "The value of the fraction is: " << result << '\n';
+}
+
+Fractie produs(const Fractie x, const Fractie y){ // Two Constructors will be called
 
 }
 
@@ -147,6 +154,7 @@ float Operatii::valoare()const{
 int main()
 {
     Fractie f;
-    cout << f;
+    Operatii o(f);
+    o.valoare();
     return 0;
 }
