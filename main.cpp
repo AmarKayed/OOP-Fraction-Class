@@ -67,10 +67,30 @@ istream &operator>>(istream &in, Fractie &ob){
     return in;
 }
 
-ostream &operator<<(ostream &out, const Fractie &ob);
+ostream &operator<<(ostream &out, const Fractie &ob){
+    if(ob.get_a() * ob.get_x() + ob.get_b() == 0)
+        cout<<"Impossible Fraction.\n";
+    else{
+        cout<<"1/(";
+        if(ob.get_a() < 0)
+            cout<<"("<<ob.get_a()<<")";
+        else cout<<ob.get_a();
+        cout<<"*";
+        if(ob.get_x() < 0)
+            cout<<"("<<ob.get_x()<<")";
+        else cout<<ob.get_x();
+        if(ob.get_b() < 0)
+            cout<<" - "<< (-1)*ob.get_b();
+        else cout<<" + " << ob.get_b();
+        cout<<")\n";
+    }
+    
+
+}
 
 int main()
 {
-
+    Fractie f;
+    cout<<f;
     return 0;
 }
